@@ -15,8 +15,17 @@ public class website {
         WebElement e2 = driver.findElement(By.id("querytext"));
         e2.sendKeys("Bengaluru");
         
-        WebElement e3 = driver.findElement(By.className("search-button__label"));
+        WebElement e3 = driver.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]/span[2]"));
         e3.click();
-	      driver.close();
+	     driver.close();
 	  }
 	}
+
+ 
+
+    
+   
+        
+        
+       
+        
