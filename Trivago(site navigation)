@@ -7,12 +7,16 @@ public class website {
 		System.setProperty("webdriver.chrome.driver","C:\\Selenium Softwares\\chromedriver.exe");
         WebDriver driver= new ChromeDriver();
         
+        driver.navigate().to("http://www.google.com/");
+        WebElement e1 = driver.findElement(By.name("q"));
+	   	e1.sendKeys("trivago");
         driver.navigate().to("https://www.trivago.in/");
         
-        WebElement e1 = driver.findElement(By.id("querytext"));
-        e1.sendKeys("Bengaluru");
-        WebElement e2 = driver.findElement(By.className("search-button__label"));
-        e2.click();
+        WebElement e2 = driver.findElement(By.id("querytext"));
+        e2.sendKeys("Bengaluru");
+        
+        WebElement e3 = driver.findElement(By.className("search-button__label"));
+        e3.click();
 	      driver.close();
 	  }
 	}
