@@ -1,0 +1,29 @@
+package Selenium.group.project1.artifact1;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+public class website {
+
+	    public String page1 = "https://www.geeksforgeeks.org/";
+	    String driverPath = "C:\\Selenium Softwares\\chromedriver.exe";
+	    public WebDriver driver ; 
+	     
+	  @Test
+	  public void verifyHomepageTitle() {
+	       
+	      System.out.println("launching geeksforgeeks"); 
+	      System.setProperty("webdriver.chrome.driver", driverPath);
+	      driver = new ChromeDriver();
+	      driver.get(page1); 
+	      String expectedTitle = "GeeksforGeeks | A computer science portal for geeks";
+	      String actualTitle = driver.getTitle();
+	      Assert.assertEquals(actualTitle, expectedTitle);
+	      driver.close();
+	  }
+	}
+	
+}
+
+
