@@ -9,18 +9,10 @@ public class website {
         
         driver.navigate().to("https://www.trivago.in/");
         
-        WebElement element = driver.findElement(By.id("nav-signin-tooltip"));
-        element.click();
-        
+        WebElement e1 = driver.findElement(By.id("querytext"));
+        e1.sendKeys("Bengaluru");
+        WebElement e2 = driver.findElement(By.className("search-button__label"));
+        e2.click();
 	      driver.close();
 	  }
 	}
-
- 
-
-    
-   
-        
-        
-       
-        
