@@ -1,26 +1,26 @@
 package Selenium.group.project1.artifact1;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.*;
 public class website {
-
-	    public String page1 = "https://www.trivago.in/";
-	    String driverPath = "C:\\Selenium Softwares\\chromedriver.exe";
-	    public WebDriver driver ; 
-	     
-	  @Test
-	  public void verifyHomepageTitle() {
-	       
-	      System.out.println("launching trivago"); 
-	      System.setProperty("webdriver.chrome.driver", driverPath);
-	      driver = new ChromeDriver();
-	      driver.get(page1); 
-	      String expectedTitle = "Find your ideal hotel and compare prices from different websites";
-	      String actualTitle = driver.getTitle();
-	      Assert.assertEquals(actualTitle, expectedTitle);
+	
+	public static void main(String[] args) throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver","C:\\Selenium Softwares\\chromedriver.exe");
+        WebDriver driver= new ChromeDriver();
+        
+        driver.navigate().to("https://www.trivago.in/");
+        
+        WebElement element = driver.findElement(By.id("nav-signin-tooltip"));
+        element.click();
+        
 	      driver.close();
 	  }
 	}
 
+ 
 
+    
+   
+        
+        
+       
+        
