@@ -10,11 +10,9 @@ public class website {
 	
 	@BeforeTest
 	void configure(){
-		String url="https://www.trivago.in/";
 		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get(url);
 	}
 	
 	@Test (priority = 0)
@@ -48,4 +46,6 @@ public class website {
     
    
         
+        
+       
         
