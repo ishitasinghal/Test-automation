@@ -17,7 +17,7 @@ public class website {
 		driver.get(url);
 	}
 	
-	@Test
+	@Test (priority = 0)
 	void navigation() {
 		
         driver.navigate().to("http://www.google.com/");
@@ -26,11 +26,11 @@ public class website {
         driver.navigate().to("https://www.trivago.in/");
 	}
 	
-	@Test
+	@Test (priority = 1)
 	void searchHotel() {
         
         WebElement e2 = driver.findElement(By.id("querytext"));
-        e2.sendKeys("Bengaluru");
+        e2.sendKeys("Mumbai");
         
         WebElement e3 = driver.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]/span[2]"));
         e3.click();
@@ -42,3 +42,10 @@ public class website {
 	     driver.close();
 	  }
 	}
+
+ 
+
+    
+   
+        
+        
