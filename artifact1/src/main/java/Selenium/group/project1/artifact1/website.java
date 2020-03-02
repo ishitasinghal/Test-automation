@@ -30,9 +30,14 @@ public class website {
         WebElement e2 = driver.findElement(By.id("querytext"));
         e2.sendKeys("Mumbai");
         
-        WebElement e3 = driver.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]/span[2]"));
+        WebElement e3 = driver.findElement(By.xpath("/html/body/div[3]/div[1]/div[3]/div[1]/div[2]/button[2]"));
         e3.click();
         
+        WebElement e4 = driver.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/div[2]/button[3]/span/span[2]/time"));
+        e4.sendKeys("Sun, 08-03-2020");
+        
+        
+      
 	}
 	
 	@AfterTest
@@ -40,12 +45,4 @@ public class website {
 	     driver.close();
 	  }
 	}
-
- 
-
-    
-   
-        
-        
        
-        
