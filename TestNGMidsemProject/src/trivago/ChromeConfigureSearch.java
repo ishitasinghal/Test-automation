@@ -23,12 +23,11 @@ WebDriver obj;
 	void insertkeys()
 	{
 		WebElement element,element1,element2;
-		element1=obj.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]"));
-		element1.click();
 		String state="Bengaluru";
 		element=obj.findElement(By.xpath("//*[@id=\"querytext\"]"));
-		element.click();
 		element.sendKeys(state);
+		List<WebElement> li = driver.findElements(By.linkText(state));
+        	li.get(0).click();
 		element2=obj.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]"));
 		element2.click();
 		
