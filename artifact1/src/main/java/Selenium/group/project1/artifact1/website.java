@@ -1,5 +1,8 @@
 package Selenium.group.project1.artifact1;
 import org.testng.annotations.*;
+
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,11 +33,17 @@ public class website {
         WebElement e2 = driver.findElement(By.id("querytext"));
         e2.sendKeys("Mumbai");
         
+        List<WebElement> li = driver.findElements(By.linkText("Mumbai"));
+        li.get(0).click();
+        
         WebElement e3 = driver.findElement(By.xpath("/html/body/div[3]/div[1]/div[3]/div[1]/div[2]/button[2]"));
         e3.click();
         
-        WebElement e4 = driver.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]/span[2]"));
-        e4.click();
+        
+        
+        
+//        WebElement e5 = driver.findElement(By.xpath("//*[@id=\"2529644\"]/article/div[1]/div[2]/div/div[1]/h3/span"));
+//        e5.click();
         
 	}
 	
