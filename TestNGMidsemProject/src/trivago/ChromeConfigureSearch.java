@@ -19,7 +19,7 @@ WebDriver obj;
 		obj.manage().window().maximize();
 		obj.get(url);
 	}
-	@Test
+	@Test(priority=1)
 	void insertkeys()
 	{
 		WebElement element,element1,element2;
@@ -31,6 +31,15 @@ WebDriver obj;
 		element2=obj.findElement(By.xpath("//*[@id=\"js-fullscreen-hero\"]/div[1]/div[2]/button[2]"));
 		element2.click();
 		
+	}
+	
+	@Test(priority=2)
+	void assertions()
+	{
+		WebElement element;
+		element=driver.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3"));
+		Assert.assertTrue(element.isEnabled());
+		driver.quit();
 	}
 
 }
