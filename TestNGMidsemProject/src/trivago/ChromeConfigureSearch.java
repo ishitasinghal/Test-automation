@@ -37,9 +37,15 @@ WebDriver obj;
 	void assertions()
 	{
 		WebElement element;
-		element=driver.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3"));
+		element=obj.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > 
+h3"));
 		Assert.assertTrue(element.isEnabled());
-		driver.quit();
+		
+	}
+	@AfterTest
+	void quitbrowser()
+	{
+		obj.quit();
 	}
 
 }
