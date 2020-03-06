@@ -1,5 +1,5 @@
 package Selenium.group.project1.artifact1;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ WebDriver obj;
 	@BeforeTest
 	void configure(){
 		String url="https://www.trivago.in/";
-		System.setProperty("webdriver.chrome.driver", "E:\\SEM VI\\Test_Automation\\Softwares\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
 		obj.manage().window().maximize();
 		obj.get(url);
@@ -51,7 +51,8 @@ WebDriver obj;
 	@Test(priority=3)
 	void datepicker()
 	{
-		 //Select Start Date (First wait Visibility then click the start date)
+		WebElement wait;
+		//Select Start Date (First wait Visibility then click the start date)
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-start,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-start")));
         obj.findElement(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-start,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-start")).click();
  
