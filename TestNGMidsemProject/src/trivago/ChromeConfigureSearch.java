@@ -42,6 +42,17 @@ h3"));
 		Assert.assertTrue(element.isEnabled());
 		
 	}
+			
+	@Test(priority=3)
+	//assertion to check hotel names 
+	void assertions2()
+	{
+		WebElement element1;
+		element1=obj.findElement(By.className("item-link name__copytext"));
+		Assert.assertTrue(element1.isEnabled());
+		
+	}
+						       
 	@AfterTest
 	void quitbrowser()
 	{
