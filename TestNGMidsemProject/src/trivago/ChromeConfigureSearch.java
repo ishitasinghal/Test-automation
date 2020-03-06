@@ -38,8 +38,6 @@ WebDriver obj;
 		element=obj.findElement(By.xpath("//*[@id=\"98422\"]/article/div[1]/div[2]/section/div[1]/article/button"));
 		Assert.assertTrue(element.isDisplayed());
 		element.click();
-		List <WebElement> lis= obj.findElements(By.className("slideouts__container--c48cd"));
-			lis.get(0).click();
 	}
 	@AfterTest
 	void quitbrowser()
