@@ -47,26 +47,13 @@ WebDriver obj;
 		Assert.assertTrue(element.isEnabled());
 		
 	}
-	
+			
 	@Test(priority=3)
 	void datepicker()
 	{
-		WebElement wait;
-		//Select Start Date (First wait Visibility then click the start date)
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-start,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-start")));
-        obj.findElement(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-start,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-start")).click();
- 
- 
-        //Select End Date (First wait Visibility then click the end date)
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-end,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-end")));
-        obj.findElement(By.cssSelector(".cal-day.cal-is-weekend.cal-is-selectable.cal-is-range.cal-is-range-end,.cal-day.cal-is-selectable.cal-is-range.cal-is-range-end")).click();
- 
-        //Select Room Type
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".df_container_roomtype_selector.df_dropdown>li:nth-of-type(2)>button")));
-        obj.findElement(By.cssSelector(".df_container_roomtype_selector.df_dropdown>li:nth-of-type(2)>button")).click();
- 
-        //See the results with your eyes. :)
-        //From now on, you can do what you want.
+        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time")).click();
+        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time")).click();
+        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
 	}
 	@AfterTest
 	void quitbrowser()
