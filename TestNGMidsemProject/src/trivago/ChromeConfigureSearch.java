@@ -2,6 +2,8 @@ package trivago;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -53,17 +55,35 @@ WebDriver obj;
 	//assertion to check hotel names 
 	void assertions2()
 	{
-		WebElement element1;
-		element1=obj.findElement(By.className("item-link name__copytext"));
-		Assert.assertTrue(element1.isDisplayed());
+		//WebElement element1;
+		//element1=obj.findElement(By.className(""));
+		//Assert.assertTrue(element1.isDisplayed());
 		
+	}
+	@Test(priority=5)
+	void showphotos()
+	{
+		WebElement element;
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__image-area > div.item__image-wrapper.pos-relative > div > img"));
+		Assert.assertTrue(element.isDisplayed());
+	}
+	@Test(priority=6)
+	void viewdeals()
+	{
+		WebElement element,element1;
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--77054.accommodation-list__row--b831d > article > div > div > button"));
+		element.click();
+		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
+		obj.switchTo().window(newWindow.get(1));
+		element1=obj.findElement(By.id("t-hdBookCTA"));
+		element1.click();
 	}
 						 
 						       
 	@AfterTest
 	void quitbrowser()
 	{
-//		obj.quit();
+		obj.quit();
 	}
 
 }
