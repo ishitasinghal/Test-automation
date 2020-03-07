@@ -1,5 +1,4 @@
-package Selenium.group.project1.artifact1;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+package trivago;
 
 import java.util.List;
 
@@ -7,13 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.Test;	
 
-public class website {
+public class ChromeConfigureSearch {
 	
 WebDriver obj;
 	
@@ -42,19 +40,31 @@ WebDriver obj;
 	@Test(priority=2)
 	void assertions()
 	{
-		WebElement element;
-		element=obj.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3"));
-		Assert.assertTrue(element.isEnabled());
+		//WebElement element;
+		String element=obj.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3")).getAttribute("value").toString();
+		//Assert.assertTrue(element.isEnabled());
+		System.out.println(element);
 		
 	}
 			
 	@Test(priority=3)
+	//assertion to check hotel names 
+	void assertions2()
+	{
+		WebElement element1;
+		element1=obj.findElement(By.className("item-link name__copytext"));
+		Assert.assertTrue(element1.isEnabled());
+		
+	}
+						 
+	@Test(priority=4)
 	void datepicker()
 	{
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time")).click();
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time")).click();
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
 	}
+						       
 	@AfterTest
 	void quitbrowser()
 	{
