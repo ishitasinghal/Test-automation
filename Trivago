@@ -18,15 +18,13 @@ WebDriver obj;
 	
 	@BeforeTest
 	void configure(){
-		obj.navigate().to("http://www.google.com/");
-		obj.manage().window().maximize();
-		WebElement we = obj.findElement(By.name("q"));
-		we.sendKeys("trivago");
-		String url="https://www.trivago.in/";
 		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
 		obj.manage().window().maximize();
-		obj.get(url);
+		obj.navigate().to("http://www.google.com/");
+		WebElement we = obj.findElement(By.name("q"));
+		we.sendKeys("trivago");
+		obj.navigate().to("http://www.trivago.in/");
 	}
 	@Test(priority=1)
 	void insertkeys()
