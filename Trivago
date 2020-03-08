@@ -1,5 +1,6 @@
-package trivago;
+package Selenium.group.project1.artifact1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,14 +10,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;	
+import org.testng.annotations.Test;
 
-public class ChromeConfigureSearch {
+public class website {
 	
 WebDriver obj;
 	
 	@BeforeTest
 	void configure(){
+		obj.navigate().to("http://www.google.com/");
+		obj.manage().window().maximize();
+		WebElement we = obj.findElement(By.name("q"));
+		we.sendKeys("trivago");
 		String url="https://www.trivago.in/";
 		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
@@ -40,10 +45,9 @@ WebDriver obj;
 	@Test(priority=2)
 	void assertions()
 	{
-		//WebElement element;
-		String element=obj.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3")).getAttribute("value").toString();
-		//Assert.assertTrue(element.isEnabled());
-		System.out.println(element);
+		WebElement element;
+		element=obj.findElement(By.cssSelector("#\\36 481954 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article > h3"));
+		Assert.assertTrue(element.isEnabled());
 		
 	}
 			
@@ -51,9 +55,11 @@ WebDriver obj;
 	//assertion to check hotel names 
 	void assertions2()
 	{
-		WebElement element1;
-		element1=obj.findElement(By.className("item-link name__copytext"));
-		Assert.assertTrue(element1.isEnabled());
+		//WebElement element1;
+		String element1=obj.findElement(By.className("item__name item__name--link")).getText();
+		System.out.println(element1);
+		
+		//Assert.assertTrue(element1.isEnabled());
 		
 	}
 						 
@@ -64,7 +70,26 @@ WebDriver obj;
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time")).click();
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
 	}
-						       
+	
+	@Test(priority=5)
+	void showphotos()
+	{
+		WebElement element;
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__image-area > div.item__image-wrapper.pos-relative > div > img"));
+		Assert.assertTrue(element.isDisplayed());
+	}
+	@Test(priority=6)
+	void viewdeals()
+	{
+		WebElement element,element1;
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--77054.accommodation-list__row--b831d > article > div > div > button"));
+		element.click();
+		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
+		obj.switchTo().window(newWindow.get(1));
+		element1=obj.findElement(By.id("t-hdBookCTA"));
+		element1.click();
+	}
+			
 	@AfterTest
 	void quitbrowser()
 	{
