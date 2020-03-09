@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,6 +12,16 @@ import org.testng.annotations.Test;
 
 public class NewTest {
 	WebDriver obj;
+	
+	public boolean isElementDisplayed(String elementName, String elementTextReplace) {
+        //wait.waitForElementToBeVisible(element(elementName, elementTextReplace));
+        boolean result = element(elementName, elementTextReplace).isDisplayed();
+        assertTrue(result, "Assertion Failed: element '" + elementName
+                + "with text " + elementTextReplace + "' is not displayed.");
+        logMessage("Assertion Passed: element " + elementName + " with text "
+                + elementTextReplace + " is displayed.");
+        return result;
+    }
 	
 
 	@BeforeTest
@@ -25,11 +36,10 @@ public class NewTest {
 	}
 	
 	@Test
-	void hotelnames()
-		{
-			//WebElement element1;
-			String element1=obj.findElement(By.className("item__name item__name--link")).getText();
-			System.out.println(element1);
-			//Assert.assertTrue(element1.isEnabled());
-		}
+	public void verifySearchResultsDisplayed(){
+		 
+		isElementDisplayed("suggestedPostHeader_label");
+		logMessage(element("suggestedPostHeader_label").getText()+" displayed.");
+	}
+	
 }
