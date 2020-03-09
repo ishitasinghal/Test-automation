@@ -1,5 +1,7 @@
 package Selenium.group.project1.artifact1;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,17 +15,6 @@ import org.testng.annotations.Test;
 public class NewTest {
 	WebDriver obj;
 	
-	public boolean isElementDisplayed(String elementName, String elementTextReplace) {
-        //wait.waitForElementToBeVisible(element(elementName, elementTextReplace));
-        boolean result = element(elementName, elementTextReplace).isDisplayed();
-        assertTrue(result, "Assertion Failed: element '" + elementName
-                + "with text " + elementTextReplace + "' is not displayed.");
-        logMessage("Assertion Passed: element " + elementName + " with text "
-                + elementTextReplace + " is displayed.");
-        return result;
-    }
-	
-
 	@BeforeTest
 	void configure(){
 		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
@@ -36,10 +27,10 @@ public class NewTest {
 	}
 	
 	@Test
-	public void verifySearchResultsDisplayed(){
-		 
-		isElementDisplayed("suggestedPostHeader_label");
-		logMessage(element("suggestedPostHeader_label").getText()+" displayed.");
+	void hotelname() {
+	WebElement element;
+	element = obj.findElement(By.className("item-link name__copytext"));
+	Assert.assertTrue(element.isDisplayed());
+	element.click();
 	}
-	
 }
