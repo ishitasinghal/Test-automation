@@ -71,7 +71,7 @@ WebDriver obj;
 	void viewdeals()
 	{
 		WebElement element,element1;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--77054.accommodation-list__row--b831d > article > div > div > button"));
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--632e3.accommodation-list__row--b9081 > article > div > div > button > span.accommodation-list__dealText--48014"));
 		element.click();
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(1));
@@ -83,7 +83,7 @@ WebDriver obj;
 	@AfterTest
 	void quitbrowser()
 	{
-		obj.quit();
+		//obj.quit();
 	}
 
 }
