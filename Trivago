@@ -86,8 +86,8 @@ WebDriver obj;
 	@Test(priority=7)
 	void newtab() {
 		WebElement we;
-		we = obj.findElement(By.id("name"));
-		we.sendKeys("Ishita");
+		we = obj.findElement(By.className("subheading-3 checkout__section-title checkout__section-title--completed"));
+		Assert.assertTrue(we.isDisplayed());
 		
 	}
 						 
