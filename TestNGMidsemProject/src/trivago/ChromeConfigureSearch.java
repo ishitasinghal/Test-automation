@@ -46,7 +46,7 @@ WebDriver obj;
 	void assertions()
 	{
 		WebElement element;
-		element=obj.findElement(By.xpath("//*[@id=\"98422\"]/article/div[1]/div[2]/section/div[1]/article/button"));
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article.accommodation-list__cheapest--bdbcd.accommodation-list__article--6eab9 > h3"));
 		Assert.assertTrue(element.isDisplayed());
 		element.click();
 	}
@@ -68,14 +68,15 @@ WebDriver obj;
 		Assert.assertTrue(element.isDisplayed());
 	}
 	@Test(priority=6)
-	void viewdeals()
+	void viewdeals() throws Exception  
 	{
 		WebElement element,element1;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--632e3.accommodation-list__row--b9081 > article > div > div > button > span.accommodation-list__dealText--48014"));
+		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--74ff5.accommodation-list__row--6a745 > article > div > div > button > span.accommodation-list__dealText--87ffb"));
 		element.click();
+		//obj.wait();
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(1));
-		element1=obj.findElement(By.id("t-hdBookCTA"));
+		element1=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
 		element1.click();
 	}
 						 
