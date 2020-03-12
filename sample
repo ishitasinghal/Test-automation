@@ -121,6 +121,9 @@ void google()
 			element.click();
 			element1=obj.findElement(By.xpath("//*[@id=\"identifierId\"]"));
 			element1.sendKeys("500060649@stu.upes.ac.in");
+			WebElement element1;
+			element1=obj.findElement(By.xpath("//*[@id=\"identifierId\"]"));
+			element1.sendKeys("500060649@stu.upes.ac.in");
 			element2=obj.findElement(By.className("CwaK9"));
 			element2.click();
 				
