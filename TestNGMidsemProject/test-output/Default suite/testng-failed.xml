@@ -3,14 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="trivago.ChromeConfigureSearch">
+      <class name="trivago.ChromeConfigureLogin">
         <methods>
-          <include name="assertions2"/>
+          <include name="addpassword"/>
           <include name="configure"/>
-          <include name="assertions"/>
-          <include name="quitbrowser"/>
         </methods>
-      </class> <!-- trivago.ChromeConfigureSearch -->
+      </class> <!-- trivago.ChromeConfigureLogin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

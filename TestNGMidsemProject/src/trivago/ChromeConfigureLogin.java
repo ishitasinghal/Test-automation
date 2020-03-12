@@ -2,6 +2,9 @@ package trivago;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,11 +43,7 @@ WebDriver obj;
 	@Test (priority=2)
 	void addpassword()
 	{
-		WebElement element;
-		element=obj.findElement(By.xpath("//*[@id=\"login_password\"]"));
-		element.click();
-		element.sendKeys("u6y2IO@1");
-		
+		List <WebElement> li = obj.findElements(By.className(""));
 	}
 
 }
