@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class Login2 {
+public class ChromeConfigureLoginAmazon {
 	
 		WebDriver obj;
 			
 			@BeforeTest
 			void configure(){
 				String url="https://www.trivago.in/";
-				System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "E:\\SEM VI\\Test_Automation\\Softwares\\Drivers\\chromedriver.exe");
 				obj=new ChromeDriver();
 				obj.manage().window().maximize();
 				obj.get(url);
@@ -28,32 +28,12 @@ public class Login2 {
 				Assert.assertTrue(name.contains("Log in"));
 				element.click();
 			}
-//			@Test (priority=1)
-//			void addcredentials()
-//			{
-//				WebElement element,element1;
-//				element=obj.findElement(By.xpath("//*[@id=\"check_email\"]"));
-//				element.sendKeys("prajjawalbanati16@gmail.com");
-//				element1=obj.findElement(By.xpath("//*[@id=\"login_email_submit\"]"));
-//				element1.click();
-//			}
-//			@Test (priority=2)
-//			void addpassword()
-//			{
-//				WebElement element;
-//				element=obj.findElement(By.className("input js_password"));
-//				element.click();
-//				element.sendKeys("u6y2IO@1");
-//				
-//			}
 			
 			@Test (priority=1)
 			void signupopt()
 			{
 				WebElement element,element1,element2,element3;
 				element=obj.findElement(By.xpath("//*[@id=\"unified-sign-in\"]/section/div/div/div[1]/div[2]/ul/li[4]/button/span[2]"));
-//				element.sendKeys("prajjawalbanati16@gmail.com");
-//				element1=obj.findElement(By.xpath("//*[@id=\"login_email_submit\"]"));
 				element.click();
 				element1=obj.findElement(By.id("ap_email"));
 				element1.sendKeys("singberry31@gmail.com");
