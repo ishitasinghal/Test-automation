@@ -122,6 +122,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
+
 public class Login1 {
 		
 	WebDriver obj;
@@ -163,9 +168,10 @@ public class Login1 {
 		@Test (priority=1)
 		void google()
 		{
-			WebElement element,element1,element2;
-			element=obj.findElement(By.xpath("//*[@id=\"unified-sign-in\"]/section/div/div/div[1]/div[2]/ul/li[2]/button/span[2]"));
-			element.click();
+			WebElement element1,element2;
+//			element=obj.findElement(By.xpath("//*[@id=\"unified-sign-in\"]/section/div/div/div[1]/div[2]/ul/li[2]/button/span[2]"));
+//			element.click();
+			new WebDriverWait(obj, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\\\"unified-sign-in\\\"]/section/div/div/div[1]/div[2]/ul/li[2]/button/span[2]"))).click();
 			element1=obj.findElement(By.className("whsOnd zHQkBf"));
 			element1.sendKeys("500060649@stu.upes.ac.in");
 			element2=obj.findElement(By.className("RveJvd snByac"));
