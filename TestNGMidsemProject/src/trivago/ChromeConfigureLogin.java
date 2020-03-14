@@ -32,18 +32,36 @@ WebDriver obj;
 		element.click();
 	}
 	@Test (priority=1)
-	void addcredentials()
+	void addemail()
 	{
 		WebElement element,element1;
 		element=obj.findElement(By.xpath("//*[@id=\"check_email\"]"));
 		element.sendKeys("prajjawalbanati16@gmail.com");
 		element1=obj.findElement(By.xpath("//*[@id=\"login_email_submit\"]"));
 		element1.click();
+		try 
+		{
+			Thread.sleep(2000);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 	@Test (priority=2)
 	void addpassword()
 	{
-		List <WebElement> li = obj.findElements(By.className(""));
+		WebElement element,element1;
+		element=obj.findElement(By.xpath("//*[@id=\"login_password\"]"));
+		element.sendKeys("u6y2IO@1");
+		element1=obj.findElement(By.xpath("//*[@id=\"login_submit\"]/span[1]"));
+		element1.click();
+		
+	}
+	@AfterTest
+	void closebrowser()
+	{
+		obj.quit();
 	}
 
 }
