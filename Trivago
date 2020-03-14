@@ -1,31 +1,28 @@
-package Selenium.group.project1.artifact1;
+package trivago;
+
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
-public class website {
+public class ChromeConfigureSearch {
 	
 WebDriver obj;
 	
 	@BeforeTest
 	void configure(){
+		String url="https://www.trivago.in/";
 		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
 		obj.manage().window().maximize();
-		obj.navigate().to("http://www.google.com/");
-		WebElement we = obj.findElement(By.name("q"));
-		we.sendKeys("trivago");
-		obj.navigate().to("http://www.trivago.in/");
+		obj.get(url);
 	}
+	
 	@Test(priority=1)
 	void insertkeys()
 	{
@@ -40,58 +37,67 @@ WebDriver obj;
 	@Test(priority=2)
 	void datepicker()
 	{
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time")).click();
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time")).click();
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
+		WebElement element,element1,element2,element3;
+        element=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time"));
+        element.click();
+        element1=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time"));
+        element1.click();
+        element2=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests"));
+        element2.click();
+        element3=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.btn.btn--primary.btn--regular.search-button.js-search-button > span.search-button__label"));
+        element3.click();
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 	
 	@Test(priority=3)
-	void assertions()
+	void viewdeals() 
 	{
 		WebElement element;
-		element=obj.findElement(By.xpath("//*[@id=\"98422\"]/article/div[1]/div[2]/section/div[1]/article/button"));
-		Assert.assertTrue(element.isDisplayed());
-		element.click();
-	}
-			
-	@Test(priority=4)
-	//assertion to check hotel names 
-	void assertions2()
-	{
-		//WebElement element1;
-		//element1=obj.findElement(By.className(""));
-		//Assert.assertTrue(element1.isDisplayed());
-		
-	}
-	@Test(priority=5)
-	void showphotos()
-	{
-		WebElement element;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__image-area > div.item__image-wrapper.pos-relative > div > img"));
-		Assert.assertTrue(element.isDisplayed());
-	}
-	@Test(priority=6)
-	void viewdeals()
-	{
-		WebElement element,element1;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--632e3.accommodation-list__row--b9081 > article > div > div > button > span.accommodation-list__dealText--48014"));
-		element.click();
+		try {
+			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element.click();
+		}
+		catch(Exception ex)
+		{
+			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element.click();			
+		}
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
-		obj.switchTo().window(newWindow.get(1));
-		element1=obj.findElement(By.id("t-hdBookCTA"));
-		element1.click();
+		obj.switchTo().window(newWindow.get(0));
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	@Test(priority=7)
-	void newtab() {
-		WebElement we;
-		we = obj.findElement(By.className("subheading-3 checkout__section-title checkout__section-title--completed"));
-		Assert.assertTrue(we.isDisplayed());
+	@Test(priority=4)
+	void booknow()
+	{
+		
+		WebElement element;
+		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
+		obj.switchTo().window(newWindow.get(1));
+		element=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
+		element.click();
+	}
+	
+	@Test(priority=5)
+	void hotelnames()
+	{
+	    obj.findElement(By.xpath("t-hdHotelName"));
+	    String actualTitle = obj.getTitle();
+	    String expectedTitle = "TREEBO TREND EMORA HOTEL AND SUITES BROOKFIELD";
+	    Assert.assertEquals(actualTitle, expectedTitle);
 		
 	}
-						 
-						       
+				 					       
 	@AfterTest
 	void quitbrowser()
 	{

@@ -17,7 +17,7 @@ WebDriver obj;
 	@BeforeTest
 	void configure(){
 		String url="https://www.trivago.in/";
-		System.setProperty("webdriver.chrome.driver", "E:\\SEM VI\\Test_Automation\\Softwares\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
 		obj.manage().window().maximize();
 		obj.get(url);
@@ -96,8 +96,8 @@ WebDriver obj;
 		element=obj.findElement(By.xpath("//*[@id=\"t-cartHotelName\"]"));
 		String name=element.getText();
 		Assert.assertTrue(name.contains("Treebo Trip Akshaya Mayflower"));;
-	}
-	
+	}			 					       
+
 	@AfterTest
 	void quitbrowser()
 	{
