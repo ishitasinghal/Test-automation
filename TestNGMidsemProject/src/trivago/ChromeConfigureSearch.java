@@ -17,7 +17,7 @@ WebDriver obj;
 	@BeforeTest
 	void configure(){
 		String url="https://www.trivago.in/";
-		System.setProperty("webdriver.chrome.driver", "E:\\SEM VI\\Test_Automation\\Softwares\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Selenium Softwares\\chromedriver.exe");
 		obj=new ChromeDriver();
 		obj.manage().window().maximize();
 		obj.get(url);
@@ -86,6 +86,22 @@ WebDriver obj;
 		obj.switchTo().window(newWindow.get(1));
 		element=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
 		element.click();
+	}
+	
+	@Test(priority=5)
+	void hotelnames()
+	{
+	    obj.findElement(By.xpath("t-hdHotelName"));
+	    String actualTitle = obj.getTitle();
+	    String expectedTitle = "TREEBO TREND EMORA HOTEL AND SUITES BROOKFIELD";
+	    Assert.assertEquals(actualTitle, expectedTitle);
+		
+	}
+	
+	@Test(priority=6)
+	void prices()
+	{
+		obj.findElement(By.id("t-hdSellingPrice")).getText();
 	}
 				 					       
 	@AfterTest
