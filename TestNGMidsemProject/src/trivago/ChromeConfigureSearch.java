@@ -103,6 +103,12 @@ WebDriver obj;
 	{
 		obj.findElement(By.id("t-hdSellingPrice")).getText();
 	}
+	
+	@Test(priority=7)
+	void displaypic()
+	{
+		obj.
+	}
 				 					       
 	@AfterTest
 	void quitbrowser()
