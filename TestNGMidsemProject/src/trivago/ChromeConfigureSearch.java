@@ -37,46 +37,57 @@ WebDriver obj;
 	@Test(priority=2)
 	void datepicker()
 	{
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time")).click();
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time")).click();
-        obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
+		WebElement element,element1,element2,element3;
+        element=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time"));
+        element.click();
+        element1=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time"));
+        element1.click();
+        element2=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests"));
+        element2.click();
+        element3=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.btn.btn--primary.btn--regular.search-button.js-search-button > span.search-button__label"));
+        element3.click();
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
+	
 	@Test(priority=3)
-	void assertions()
+	void viewdeals() 
 	{
 		WebElement element;
-		element=obj.findElement(By.xpath("//*[@id=\"4564186\"]/article/div[1]/div[2]/div/div/button/span[1]/span[3]"));
-		element.click();
-	}
-			
-	@Test(priority=4)
-	//assertion to check hotel names 
-	void assertions2()
-	{
-		//WebElement element1;
-		//element1=obj.findElement(By.className(""));
-		//Assert.assertTrue(element1.isDisplayed());
-		
-	}
-	@Test(priority=5)
-	void showphotos()
-	{
-		WebElement element;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__image-area > div.item__image-wrapper.pos-relative > div > img"));
-		Assert.assertTrue(element.isDisplayed());
-	}
-	@Test(priority=6)
-	void viewdeals()  
-	{
-		WebElement element;
-		element=obj.findElement(By.xpath("//*[@id=\"4564186\"]/article/div[1]/div[2]/section/div[2]/article/div/div/button/span[1]"));
-		element.click();
+		try {
+			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element.click();
+		}
+		catch(Exception ex)
+		{
+			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element.click();			
+		}
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(0));
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-						 
-						       
+	
+	@Test(priority=4)
+	void booknow()
+	{
+		
+		WebElement element;
+		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
+		obj.switchTo().window(newWindow.get(1));
+		element=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
+		element.click();
+	}
+				 					       
 	@AfterTest
 	void quitbrowser()
 	{
