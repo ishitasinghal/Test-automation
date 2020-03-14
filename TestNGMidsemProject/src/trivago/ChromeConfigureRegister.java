@@ -12,7 +12,8 @@ public class ChromeConfigureRegister {
 	WebDriver obj;
 	
 	@BeforeTest
-	void configure(){
+	void configure()
+	{
 		String url="https://www.trivago.in/";
 		System.setProperty("webdriver.chrome.driver", "E:\\SEM VI\\Test_Automation\\Softwares\\Drivers\\chromedriver.exe");
 		obj=new ChromeDriver();
@@ -42,7 +43,7 @@ public class ChromeConfigureRegister {
 	{
 		WebElement element,element1;
 		element=obj.findElement(By.xpath("//*[@id=\"register_email\"]"));
-		element.sendKeys("user@gmail.com");
+		element.sendKeys("singhuser1@gmail.com");
 		element1=obj.findElement(By.xpath("//*[@id=\"register_password\"]"));
 		element1.sendKeys("123456");
 	}

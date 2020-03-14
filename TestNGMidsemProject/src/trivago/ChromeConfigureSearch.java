@@ -37,17 +37,17 @@ WebDriver obj;
 	@Test(priority=2)
 	void datepicker()
 	{
-		WebElement element,element1,element2,element3;
-        element=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time"));
-        element.click();
-        element1=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time"));
-        element1.click();
-        element2=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests"));
-        element2.click();
-        element3=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.btn.btn--primary.btn--regular.search-button.js-search-button > span.search-button__label"));
-        element3.click();
+		WebElement dateofarr,dateofdept,roomtype,searchbtn;
+		dateofarr=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > time"));
+		dateofarr.click();
+		dateofdept=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > div.df_overlay.js-overlay > div.df_container_calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > time"));
+		dateofdept.click();
+		roomtype=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests"));
+		roomtype.click();
+		searchbtn=obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.btn.btn--primary.btn--regular.search-button.js-search-button > span.search-button__label"));
+		searchbtn.click();
         try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,20 +59,19 @@ WebDriver obj;
 	{
 		WebElement element;
 		try {
-			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element=obj.findElement(By.cssSelector("#\\34 564936 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
 			element.click();
 		}
 		catch(Exception ex)
 		{
-			element=obj.findElement(By.cssSelector("#\\31 7405474 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--5c118.accommodation-list__row--e335c > article > div > div > button > span > span.accommodation-list__text--bd4f5"));
+			element=obj.findElement(By.xpath("/html/body/div[4]/main/div[1]/div/div[4]/div/div/div[3]/div[1]/section/ol/li[1]/article/div[1]/div[2]/section/div[2]/article/div/div/button/span/span[1]"));
 			element.click();			
 		}
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(0));
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(16000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -85,35 +84,24 @@ WebDriver obj;
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(1));
 		element=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
+		String name=element.getText();
+		Assert.assertTrue(name.contains("BOOK NOW"));
 		element.click();
 	}
-	
 	@Test(priority=5)
-	void hotelnames()
+	void assertions()
 	{
-	    obj.findElement(By.xpath("t-hdHotelName"));
-	    String actualTitle = obj.getTitle();
-	    String expectedTitle = "TREEBO TREND EMORA HOTEL AND SUITES BROOKFIELD";
-	    Assert.assertEquals(actualTitle, expectedTitle);
-		
-	}
-	
-	@Test(priority=6)
-	void prices()
-	{
-		obj.findElement(By.id("t-hdSellingPrice")).getText();
-	}
-	
-	@Test(priority=7)
-	void displaypic()
-	{
-		obj.
-	}
-				 					       
+		WebElement element,element1;
+		//Assertion to check the hotel name
+		element=obj.findElement(By.xpath("//*[@id=\"t-cartHotelName\"]"));
+		String name=element.getText();
+		Assert.assertTrue(name.contains("Treebo Trip Akshaya Mayflower"));;
+	}			 					       
+
 	@AfterTest
 	void quitbrowser()
 	{
-		//obj.quit();
+		obj.quit();
 	}
 
 }
