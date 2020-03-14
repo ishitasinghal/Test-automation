@@ -91,15 +91,10 @@ WebDriver obj;
 	@Test(priority=5)
 	void hotelnames()
 	{
-		WebElement element;
 	    obj.findElement(By.xpath("t-hdHotelName"));
-
-	    List<WebElement> heading = obj.findElements(By.xpath("//h2[contains(text(), 'Downloads')]"));
-	    if(heading.size() > 0)
-	    {
-	        System.out.println("Headings listed.");
-	    }
-		
+	    String actualTitle = obj.getTitle();
+	    String expectedTitle = "TREEBO TREND EMORA HOTEL AND SUITES BROOKFIELD";
+	    Assert.assertEquals(actualTitle, expectedTitle);
 		
 	}
 				 					       
