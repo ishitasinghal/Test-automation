@@ -10,7 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class ChromeConfigureLoginAmazon {
 	
 		WebDriver obj;
-			
+		@DataProvider(name = "data-provider")
+	    public Object[][] dataProviderMethod() {
+	        return new Object[][] { { "prajjawalbanati16@gmail.com" , "puneet321banati" } };
+	    }
 			@BeforeTest
 			void configure(){
 				String url="https://www.trivago.in/";
@@ -29,20 +32,25 @@ public class ChromeConfigureLoginAmazon {
 				element.click();
 			}
 			
-			@Test (priority=1)
-			void signupopt()
+			@Test (priority=1,dataProvider="data-provider")
+			void signupopt(String username,String password)
 			{
 				WebElement element,element1,element2,element3;
 				element=obj.findElement(By.xpath("//*[@id=\"unified-sign-in\"]/section/div/div/div[1]/div[2]/ul/li[4]/button/span[2]"));
 				element.click();
 				element1=obj.findElement(By.id("ap_email"));
-				element1.sendKeys("singberry31@gmail.com");
+				element1.sendKeys(username);
 				element2=obj.findElement(By.id("ap_password"));
-				element2.sendKeys("abcd@1234");
+				element2.sendKeys(password);
 				element3=obj.findElement(By.id("signInSubmit"));
 				element3.click();
 				
 				
+			}
+			@AfterTest
+			void closebrowser()
+			{
+				obj.quit();
 			}
 
 		}

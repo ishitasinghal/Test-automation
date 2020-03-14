@@ -22,6 +22,7 @@ WebDriver obj;
 		obj.manage().window().maximize();
 		obj.get(url);
 	}
+	
 	@Test(priority=1)
 	void insertkeys()
 	{
@@ -41,13 +42,11 @@ WebDriver obj;
         obj.findElement(By.cssSelector("#js-fullscreen-hero > div.hero__content > form > button.dealform-button.dealform-button--guests.js-dealform-button-guests")).click();
 	}
 
-	
 	@Test(priority=3)
 	void assertions()
 	{
 		WebElement element;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div:nth-child(2) > article.accommodation-list__cheapest--bdbcd.accommodation-list__article--6eab9 > h3"));
-		Assert.assertTrue(element.isDisplayed());
+		element=obj.findElement(By.xpath("//*[@id=\"4564186\"]/article/div[1]/div[2]/div/div/button/span[1]/span[3]"));
 		element.click();
 	}
 			
@@ -68,16 +67,13 @@ WebDriver obj;
 		Assert.assertTrue(element.isDisplayed());
 	}
 	@Test(priority=6)
-	void viewdeals() throws Exception  
+	void viewdeals()  
 	{
-		WebElement element,element1;
-		element=obj.findElement(By.cssSelector("#\\34 564186 > article > div.pos-relative.item__wrapper > div.item__flex-column > section > div.accommodation-list__rowLast--74ff5.accommodation-list__row--6a745 > article > div > div > button > span.accommodation-list__dealText--87ffb"));
+		WebElement element;
+		element=obj.findElement(By.xpath("//*[@id=\"4564186\"]/article/div[1]/div[2]/section/div[2]/article/div/div/button/span[1]"));
 		element.click();
-		//obj.wait();
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
-		obj.switchTo().window(newWindow.get(1));
-		element1=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
-		element1.click();
+		obj.switchTo().window(newWindow.get(0));
 	}
 						 
 						       
@@ -88,4 +84,3 @@ WebDriver obj;
 	}
 
 }
-
