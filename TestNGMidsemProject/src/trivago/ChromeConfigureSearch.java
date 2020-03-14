@@ -86,8 +86,7 @@ WebDriver obj;
 		element=obj.findElement(By.xpath("//*[@id=\"t-hdBookCTA\"]"));
 		String name=element.getText();
 		Assert.assertTrue(name.contains("BOOK NOW"));
-		element.click();
-
+		element.click();git
 	}
 	
 	@AfterTest
