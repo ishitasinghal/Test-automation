@@ -70,7 +70,7 @@ WebDriver obj;
 		ArrayList<String> newWindow = new ArrayList <String> (obj.getWindowHandles());
 		obj.switchTo().window(newWindow.get(0));
 		try {
-			Thread.sleep(17000);
+			Thread.sleep(16000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -87,6 +87,15 @@ WebDriver obj;
 		String name=element.getText();
 		Assert.assertTrue(name.contains("BOOK NOW"));
 		element.click();
+	}
+	@Test(priority=5)
+	void assertions()
+	{
+		WebElement element,element1;
+		//Assertion to check the hotel name
+		element=obj.findElement(By.xpath("//*[@id=\"t-cartHotelName\"]"));
+		String name=element.getText();
+		Assert.assertTrue(name.contains("Treebo Trip Akshaya Mayflower"));;
 	}
 	
 	@AfterTest
